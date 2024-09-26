@@ -1,0 +1,155 @@
+body {
+    font-family: Arial, sans-serif; /* Change font */
+    background-color: #f4f4f4; /* Light background */
+    margin: 0; /* Remove default margin */
+    padding: 20px; /* Padding around body */
+}
+
+h1, h2{
+    text-align: center; /* Center the heading */
+    color: #333; /* Dark text color */
+}
+
+.panel {
+    background: white; /* White background for panel */
+    padding: 20px; /* Padding inside the panel */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    max-width: 600px; /* Limit width */
+    margin: auto; /* Center panel */
+}
+
+/* Styles for input fields and buttons */
+input[type="text"],
+input[type="password"],
+select {
+    width: calc(100% - 20px); /* Full width minus padding */
+    padding: 10px; /* Padding inside input */
+    margin-bottom: 10px; /* Space below input */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+}
+
+button {
+    width: 100%; /* Full width button */
+    padding: 10px; /* Padding inside button */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor on hover */
+}
+
+button[type="submit"] {
+    background-color: #007bff; /* Blue background for submit buttons */
+    color: white; /* White text */
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Styles for the door list */
+.door-list {
+    list-style-type: none; /* Remove default list styles */
+    padding: 0; /* Remove padding */
+}
+
+.door-list li {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Space between door name and button */
+    align-items: center; /* Center items vertically */
+    margin: 10px 0; /* Margin between items */
+    padding: 10px; /* Padding around each item */
+    border: 1px solid #ccc; /* Border around each item */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #f9f9f9; /* Slightly different background */
+}
+
+
+
+
+.toggle-button {
+    margin-top: 20px; /* Space above button */
+    padding: 10px 15px; /* Button padding */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #007bff; /* Blue background */
+    color: white; /* White text */
+    cursor: pointer; /* Change cursor on hover */
+}
+
+.toggle-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+#add-door-form {
+    display: none; /* Initially hide the form */
+    margin-top: 20px; /* Space above form */
+}
+
+/* Existing styles for the login page */
+.login-form {
+    max-width: 300px; /* Set a maximum width for the form */
+    margin: auto; /* Center the form */
+}
+
+.login-form {
+    max-width: 300px; /* Set a maximum width for the form */
+    margin: auto; /* Center the form */
+    text-align: center; /* Center align text within the form */
+}
+
+.login-form button {
+    width: 100%; /* Full width for the button */
+    padding: 10px; /* Padding for the button */
+    background-color: #007bff; /* Button color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    margin-top: 10px; /* Space above button */
+}
+
+.login-form button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+
+
+.locked {
+    background-color: green; /* Green for locked */
+    color: white; /* White text */
+}
+
+.unlocked {
+    background-color: red; /* Red for unlocked */
+    color: white; /* White text */
+}
+
+/* Optional: Additional styles for button appearance */
+.status-button {
+    padding: 10px 15px; /* Button padding */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.access-panel {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 50px; /* Position from top */
+    right: 0; /* Position on the right */
+    width: 300px; /* Width of the panel */
+    background-color: white; /* Background color */
+    border: 1px solid #ccc; /* Border around panel */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    z-index: 1000; /* Higher z-index to overlay on other elements */
+}
+
+.panel-content {
+    padding: 20px; /* Padding inside the panel */
+}
+
+#door-checklist {
+    margin-bottom: 10px; /* Space below checklist */
+}

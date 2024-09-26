@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Door Lock</title>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> -->
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Change font */
+            background-color: #f4f4f4; /* Light background */
+            margin: 0; /* Remove default margin */
+            padding: 20px; /* Padding around body */
+        }
+        h1 {
+            text-align: center; /* Center the heading */
+            color: #333; /* Dark text color */
+        }
+        .panel {
+            background: white; /* White background for panel */
+            padding: 20px; /* Padding inside the panel */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+            max-width: 600px; /* Limit width */
+            margin: auto; /* Center panel */
+        }
+        .door-list {
+            list-style-type: none; /* Remove default list styles */
+            padding: 0; /* Remove padding */
+        }
+        .door-list li {
+            display: flex; /* Use flexbox for alignment */
+            justify-content: space-between; /* Space between door name and button */
+            align-items: center; /* Center items vertically */
+            margin: 10px 0; /* Margin between items */
+            padding: 10px; /* Padding around each item */
+            border: 1px solid #ccc; /* Border around each item */
+            border-radius: 5px; /* Rounded corners */
+            background-color: #f9f9f9; /* Slightly different background */
+        }
+        .status-button {
+            padding: 10px 15px; /* Button padding */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Change cursor on hover */
+        }
+        .locked {
+            background-color: green; /* Green for locked */
+            color: white; /* Text color */
+        }
+        .unlocked {
+            background-color: red; /* Red for unlocked */
+            color: white; /* Text color */
+        }
+        .toggle-button {
+            margin-top: 20px; /* Space above button */
+            padding: 10px 15px; /* Button padding */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            background-color: #007bff; /* Blue background */
+            color: white; /* White text */
+            cursor: pointer; /* Change cursor on hover */
+        }
+        .toggle-button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        #add-door-form {
+            display: none; /* Initially hide the form */
+            margin-top: 20px; /* Space above form */
+        }
+    </style>
+</head>
+<body>
+    <div class="panel">
+        <h1>Smart Door Lock System</h1>
+        <p>Logged in as: {{ username }}</p>
+        
+        {% if is_admin %}
+            <p><a href="/admin_panel">Go to Admin Panel</a></p>
+        {% endif %}
+        
+        <h2>Available Doors</h2>
+
+        <ul class="door-list">
+            {% for door in doors %}
+                <li>
+                    <span>{{ door.name }}</span>
+                    <form action="{% if door.is_locked %}/unlock/{{ door._id }}{% else %}/lock/{{ door._id }}{% endif %}" method="POST" style="display:inline;">
+                        <button type="submit" class="status-button {% if door.is_locked %}locked{% else %}unlocked{% endif %}">
+                            {% if door.is_locked %}
+                                Locked
+                            {% else %}
+                                Unlocked
+                            {% endif %}
+                        </button>
+                    </form>
+                    <form action="/remove/{{ door._id }}" method="POST" style="display:inline;">
+                        <button type="submit">Remove</button>
+                    </form>
+                </li>
+            {% else %}
+                <li>No doors available.</li>
+            {% endfor %}
+        </ul>
+
+        <button class="toggle-button" id="add-door-button">Add Door</button>
+        <form method="POST" action="/doors" id="add-door-form">
+            <input type="text" name="door_name" placeholder="Door Name" required>
+            <button type="submit">+
+            </button>
+        </form>
+        <form action="/lock_all_doors" method="POST">
+            <button type="submit" class="toggle-button">Lock All Doors</button>
+        </form>
+
+        <p><a href="/logout">Logout</a></p>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+        // JavaScript to toggle the add door form visibility
+        document.getElementById('add-door-button').addEventListener('click', function() {
+            var form = document.getElementById('add-door-form');
+            if (form.style.display === 'none' || form.style.display === '') {
+                form.style.display = 'block'; // Show the form
+            } else {
+                form.style.display = 'none'; // Hide the form
+            }
+        });
+    </script>
+</body>
+</html>
